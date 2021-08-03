@@ -20,6 +20,7 @@ Swimming simulation:
 
 
 import numpy as np
+from sim_functions import *
 ## set seed for dev, remove it for actual simulation 
 # import random
 # random.seed(10)
@@ -27,74 +28,17 @@ import numpy as np
 # athletes have a latent quality
 n_athletes = 32
 athlete_avg_skill_level = np.random.uniform(0, 1, n_athletes)
-
+num_ath_per_heat = 8
 # run competition simulation
 n_sims = 100
 # here, we set up a data structure to hold per-competition statistics we care about
 did_fastest_person_win = []
 for sim in range(n_sims):
 
-    # here is an entire competition:
-    list_of_athletes = list(range(32))
+    athletes_by_heat = heat(n_athletes, num_ath_per_heat)
+          
     
-    # prelims = 4 heats
-    ath_finished_prelims = []
-    
-    # heat 1 
-    heat1_participants = np.random.choice(list_of_athletes, size=8, replace=False)
-    for athlete in heat1_participants:
-        ath_finished_prelims.append(athlete)
-    
-    # heat 2
-    heat2_participants = np.random.choice(np.array(list(set(heat1_participants) ^ set(list_of_athletes))),
-                                          size=8, replace=False)
-    for athlete in heat2_participants:
-        ath_finished_prelims.append(athlete)
-        
-    # heat 3 
-    heat3_participants = np.random.choice(np.array(list(set(ath_finished_prelims) ^ set(list_of_athletes))),
-                                          size=8, replace=False)
-    for athlete in heat3_participants:
-        ath_finished_prelims.append(athlete)
-        
-    # heat 4 
-    heat4_participants = np.random.choice(np.array(list(set(ath_finished_prelims) ^ set(list_of_athletes))),
-                                          size=8, replace=False)
-    for athlete in heat4_participants:
-        ath_finished_prelims.append(athlete)
-        
-    
-    
-    
-    participants = []
-    times = []
-    
-    # run heat 1
-    for i in range(len(heat1_participants)):
-        participants.append(heat1_participants[i])
-        times.append(np.random.normal(athlete_avg_skill_level[heat1_participants[i]], .3))
-    
-    # run heat 2
-    for i in range(len(heat2_participants)):
-        participants.append(heat2_participants[i])
-        times.append(np.random.normal(athlete_avg_skill_level[heat2_participants[i]], .3))
-        
-    # run heat 3
-    for i in range(len(heat3_participants)):
-        participants.append(heat3_participants[i])
-        times.append(np.random.normal(athlete_avg_skill_level[heat3_participants[i]], .3))
-        
-    # run heat 4
-    for i in range(len(heat4_participants)):
-        participants.append(heat4_participants[i])
-        times.append(np.random.normal(athlete_avg_skill_level[heat4_participants[i]], .3))
-        
-        
-    
-    # heat participants by times
-    prelim_result_list = [i for time, i in sorted(zip(times, participants))]
-    prelim_winners = prelim_result_list[0:17]
-    
+    prelim_winners = prelim_results(athletes_by_heat, num_ath_per_heat, athlete_avg_skill_level)
     
     
     # run the "semifinals"
