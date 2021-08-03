@@ -91,3 +91,31 @@ def prelim_results(athletes_by_heat, num_ath_per_heat, athlete_avg_skill_level):
     prelim_winners = prelim_result_list[0:17]
     
     return prelim_winners
+
+def semi_results(prelim_winners, num_ath_per_heat, athlete_avg_skill_level, semi_participants):
+    ath_finished_semi = []
+    # split into first and second semi-finals
+    semifinals1 = np.random.choice(prelim_winners, size=num_ath_per_heat, replace=False)
+    for athlete in semifinals1:
+        ath_finished_semi.append(athlete)
+        
+    semifinals2 = np.random.choice(np.array(list(set(prelim_winners) ^ set(ath_finished_semi))),
+                                          size=num_ath_per_heat, replace=False)
+    for athlete in semifinals2:
+        ath_finished_semi.append(athlete)
+        
+    # run semi-finals    
+    semi_athletes = semi_participants
+    times = []
+    for i in range(len(semifinals1)):
+        semi_athletes.append(semifinals1[i])
+        times.append(np.random.normal(athlete_avg_skill_level[semifinals1[i]], .3))
+        
+    for i in range(len(semifinals2)):
+        semi_athletes.append(semifinals2[i])
+        times.append(np.random.normal(athlete_avg_skill_level[semifinals2[i]], .3))
+    
+    semi_result_list = [i for time, i in sorted(zip(times, semi_athletes))]
+    semi_winners = semi_result_list[0:8]
+    
+    return semi_winners
