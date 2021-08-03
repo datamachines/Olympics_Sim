@@ -5,28 +5,14 @@ Created on Tuesday Aug 3 12:28 2021
 
 @author: Ethan
 
-Olympic simulation:
-    hold # of athletes and their associated skill level/ latent quality constant
-    n_sims = 100
-    draw distribution for # the best athlete wins
-    in each of the different tournament structures
-
-Swimming simulation: 
-    Events have prelims, semis, & finals
-    top 16 from prelims go to semis
-    top 8 from semis go to the finals 
-
-Simulation functions:
-
-
 """
 
 import numpy as np
 
+# Generates four heats with num_ath_per_heat number of athletes in each heat, returns array with athletes grouped by heat
+def heat_gen(n_athletes, num_ath_per_heat):
 
-def heat(n_athletes, num_ath_per_heat):
-
-    # total number of athletes
+    # total number of athletes competing
     list_of_athletes = list(range(n_athletes))
 
     # number of athletes in each heat
@@ -58,8 +44,11 @@ def heat(n_athletes, num_ath_per_heat):
     for athlete in heat4_participants:
         ath_finished_prelims.append(athlete)
 
+    # returns array with all athletes grouped by heat number
     return ath_finished_prelims
 
+
+# calculates preliminary results of bracket competition by time, returns array of 16 remaining competitors
 def prelim_results(athletes_by_heat, num_ath_per_heat, athlete_avg_skill_level):
     participants = []
     times = []
@@ -90,8 +79,11 @@ def prelim_results(athletes_by_heat, num_ath_per_heat, athlete_avg_skill_level):
     prelim_result_list = [i for time, i in sorted(zip(times, participants))]
     prelim_winners = prelim_result_list[0:17]
     
+    # array of 16 remaining competitors
     return prelim_winners
 
+
+# runs two semi final groups and returns an array of the 8 remaining competitors
 def semi_results(prelim_winners, num_ath_per_heat, athlete_avg_skill_level, semi_participants):
     ath_finished_semi = []
     # split into first and second semi-finals
@@ -118,4 +110,20 @@ def semi_results(prelim_winners, num_ath_per_heat, athlete_avg_skill_level, semi
     semi_result_list = [i for time, i in sorted(zip(times, semi_athletes))]
     semi_winners = semi_result_list[0:8]
     
+    # remaining 8 competitors with the best time
     return semi_winners
+
+# returns an array of the top three fastest athletes
+def final_results(semi_winners, semi_participants, athlete_avg_skill_level):
+    # run the finals
+    finals_participants = []
+    times = []
+    for i in range(len(semi_winners)):
+        finals_participants.append(semi_winners[i])
+        times.append(np.random.normal(athlete_avg_skill_level[semi_winners[i]], .3))
+        
+    final_result_list = [i for time, i in sorted(zip(times, semi_participants))]
+    final_winners = final_result_list[0:3]
+    
+    # remaining three competitors with the fastest times
+    return final_winners
