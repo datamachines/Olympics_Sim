@@ -14,21 +14,17 @@ import numpy as np
 import random
 random.seed(10)
 
-# athletes have a latent quality
+# number of athletes in a competition
 n_athletes = 32
-# all athletes randomly assigned a skill level between 0 and 1 from a uniform distribution
+
+# all athletes have a randomly assigned skill level between 0 and 1 from a uniform distribution
+# this represent their latent quality coming into the olympics
 athlete_avg_skill_level = np.random.uniform(0, 1, n_athletes)
-<<<<<<< HEAD
 
 # who is the best player going into the olympics?
 highest_latent_quality = max(athlete_avg_skill_level)
 best_athlete_pre_oly = list(athlete_avg_skill_level).index(highest_latent_quality)
 
 
-
-=======
 # set number of athletes in each heat
 num_ath_per_heat = 8
-# run competition simulation n_sims number of times
-n_sims = 100
->>>>>>> 893584d4d7dcac3bbd1519a70008e2f6dc47c160
