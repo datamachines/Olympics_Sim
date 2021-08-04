@@ -21,18 +21,11 @@ Swimming simulation:
 
 import numpy as np
 from sim_functions import *
+from fixed_vars import *
 ## set seed for dev, remove it for actual simulation 
 # import random
 # random.seed(10)
 
-# athletes have a latent quality
-n_athletes = 32
-# all athletes randomly assigned a skill level between 0 and 1 from a uniform distribution
-athlete_avg_skill_level = np.random.uniform(0, 1, n_athletes)
-# set number of athletes in each heat
-num_ath_per_heat = 8
-# run competition simulation n_sims number of times
-n_sims = 100
 # here, we set up a data structure to hold per-competition statistics we care about
 did_fastest_person_win = []
 for sim in range(n_sims):
