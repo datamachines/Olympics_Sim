@@ -18,3 +18,9 @@ random.seed(10)
 n_athletes = 32
 athlete_avg_skill_level = np.random.uniform(0, 1, n_athletes)
 
+# who is the best player going into the olympics?
+highest_latent_quality = max(athlete_avg_skill_level)
+best_athlete_pre_oly = list(athlete_avg_skill_level).index(highest_latent_quality)
+
+
+
