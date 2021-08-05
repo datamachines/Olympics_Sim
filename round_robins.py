@@ -23,10 +23,8 @@ import itertools
 from single_elim_bracket import *
 from single_elim_sim import get_bronze_bracket_winner
 
-list_of_athletes = list(range(n_athletes))
 
-# form groups for the reound robins prelims
-
+# form groups for the round robins prelims
 def assign_pools(list_of_athletes, poolsize=4):
     pools = []
 
@@ -49,10 +47,7 @@ def assign_pools(list_of_athletes, poolsize=4):
     return pools
 
 
-pools = assign_pools(list_of_athletes, poolsize=4)
-
-
-def run_round_robins(pools):
+def run_round_robins(pools, athlete_avg_skill_level):
     single_elim_teams = []
     for teams in pools:
         games = list(itertools.combinations(teams, 2))
@@ -99,8 +94,6 @@ def run_round_robins(pools):
     return single_elim_teams
 
 
-phase_two_teams = run_round_robins(pools)
-
 def run_elim_bracket(phase_two_teams, athlete_avg_skill_level):
 
     rounds = []
@@ -125,25 +118,25 @@ def run_elim_bracket(phase_two_teams, athlete_avg_skill_level):
     
     return gold_silver_medalists, quarterfinal_winners, rounds
 
-gold_silver_medalists, quarterfinal_winners, rounds = run_elim_bracket(phase_two_teams, athlete_avg_skill_level)
 
 
-# import get_bronze_bracket_winner function from single_elim_sim.py
-bronze_medalist = get_bronze_bracket_winner(quarterfinal_winners, rounds, athlete_avg_skill_level)
-
-
-# return the medal winners 
-def main(gold_silver_medalists, bronze_medalist):
+def run_roundrobin(list_of_athletes, athlete_avg_skill_level, poolsize):
+    # create the round robin pools, 8 teams in each pool
+    pools = assign_pools(list_of_athletes, poolsize)
+    # play round robins and determine who moves onto phase 2: single elimination bracket
+    phase_two_teams = run_round_robins(pools, athlete_avg_skill_level)
+    # the final two in the single elimination bracket compete for the gold, runner up wins silver
+    gold_silver_medalists, quarterfinal_winners, rounds = run_elim_bracket(phase_two_teams, athlete_avg_skill_level)
+    # the losers of the quarterfile matches compete in the bronze bracket
+    # import get_bronze_bracket_winner function from single_elim_sim.py
+    bronze_medalist = get_bronze_bracket_winner(quarterfinal_winners, rounds, athlete_avg_skill_level)
+    
+    # return the medal winners 
     # note: the gold and silver medalists aren't necessarily in order
-    top_three_medalists = [i for i in gold_silver_medalists]
+    medalists = [i for i in gold_silver_medalists]
     for i in bronze_medalist:
-        top_three_medalists.append(i)
+        medalists.append(i)
         
-    return top_three_medalists
-
-if __name__ == "__main__":
-   # stuff only to run when not called via 'import' here
-   top_three_medalists = main(gold_silver_medalists, bronze_medalist)
-   print ("The medal winners: ", top_three_medalists)
+    return medalists
    
     

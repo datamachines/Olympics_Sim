@@ -21,10 +21,6 @@ from fixed_vars import *
 totalmatches = n_athletes - 1
 
 
-
-games_map = {}
-next_players = []
-
 def first_round(n_athletes, athlete_avg_skill_level):
     next_players = []
     for i in range(int(n_athletes / 2)):

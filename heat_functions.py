@@ -5,9 +5,15 @@ Created on Tuesday Aug 3 12:28 2021
 
 @author: Ethan
 
+heat simulation: 
+    events have prelims, semis, & finals
+    top 16 from prelims go to semis
+    top 8 from semis go to the finals 
+    
 """
 
 import numpy as np
+
 
 # Generates four heats with num_ath_per_heat number of athletes in each heat, returns array with athletes grouped by heat
 def heat_gen(n_athletes, num_ath_per_heat):
@@ -113,6 +119,7 @@ def semi_results(prelim_winners, num_ath_per_heat, athlete_avg_skill_level, semi
     # remaining 8 competitors with the best time
     return semi_winners
 
+
 # returns an array of the top three fastest athletes
 def final_results(semi_winners, semi_participants, athlete_avg_skill_level):
     # run the finals
@@ -127,3 +134,19 @@ def final_results(semi_winners, semi_participants, athlete_avg_skill_level):
     
     # remaining three competitors with the fastest times
     return final_winners
+
+
+def run_heat(n_athletes, athlete_avg_skill_level, num_ath_per_heat):
+    # generate heats to be timed
+    athletes_by_heat = heat_gen(n_athletes, num_ath_per_heat)
+    # run preliminary heats      
+    prelim_winners = prelim_results(athletes_by_heat, num_ath_per_heat, athlete_avg_skill_level)
+    # run semi-final heats
+    semi_participants = [] # declared outside of semi_results() because final_results() also needs this array
+    semi_winners = semi_results(prelim_winners, num_ath_per_heat, athlete_avg_skill_level, semi_participants)
+    # determine final heat results 
+    medalists = final_results(semi_winners, semi_participants, athlete_avg_skill_level)
+    
+    return medalists
+
+

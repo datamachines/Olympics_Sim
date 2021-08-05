@@ -11,6 +11,7 @@ import numpy as np
 from single_elim_bracket import *
 from fixed_vars import *
 
+
 def get_gold_sliv_bracket_winners(n_athletes, athlete_avg_skill_level):
     # array to hold results of each round
     rounds = []
@@ -39,9 +40,6 @@ def get_gold_sliv_bracket_winners(n_athletes, athlete_avg_skill_level):
     gold_silver_medalists = rounds[len(rounds)-2]
     
     return gold_silver_medalists, quarterfinal_winners, rounds
-    
-
-gold_silver_medalists, quarterfinal_winners, rounds = get_gold_sliv_bracket_winners(n_athletes, athlete_avg_skill_level)
    
  
 '''
@@ -69,22 +67,16 @@ def get_bronze_bracket_winner(quarterfinal_winners, rounds, athlete_avg_skill_le
     # print("Bronze medalist: ", bronze_rounds[2])
     
     return bronze_medalist
-    
-bronze_medalist = get_bronze_bracket_winner(quarterfinal_winners, rounds, athlete_avg_skill_level)
 
 
-# return the medal winners 
-def main(gold_silver_medalists, bronze_medalist):
+def run_elim_bracket(n_athletes, athlete_avg_skill_level):
+    gold_silver_medalists, quarterfinal_winners, rounds = get_gold_sliv_bracket_winners(n_athletes, athlete_avg_skill_level)
+    bronze_medalist = get_bronze_bracket_winner(quarterfinal_winners, rounds, athlete_avg_skill_level)
+    # return the medal winners 
     # note: the gold and silver medalists aren't necessarily in order
-    top_three_medalists = [i for i in gold_silver_medalists]
+    medalists = [i for i in gold_silver_medalists]
     for i in bronze_medalist:
-        top_three_medalists.append(i)
+        medalists.append(i)
         
-    return top_three_medalists
-
-if __name__ == "__main__":
-   # stuff only to run when not called via 'import' here
-   top_three_medalists = main(gold_silver_medalists, bronze_medalist)
-   print ("The medal winners: ", top_three_medalists)
-   
+    return medalists
     
