@@ -20,7 +20,7 @@ import numpy as np
 from fixed_vars import *
 from collections import Counter
 import itertools
-from single_elim_bracket import *
+from bracket_functions import *
 from single_elim_sim import get_bronze_bracket_winner
 
 
