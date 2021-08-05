@@ -4,12 +4,6 @@
 Created on Mon Aug  2 15:52:33 2021
 
 @author: ivy
-
-Olympic simulation:
-    hold # of athletes and their associated skill level/ latent quality constant
-    n_sims = 100
-    draw distribution for # the best athlete wins
-    in each of the different tournament structures
     
 Bracket simulation:
     single elimination style

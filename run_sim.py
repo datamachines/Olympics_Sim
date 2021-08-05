@@ -5,10 +5,20 @@ Created on Wed Aug  4 17:00:22 2021
 
 @author: ivy
 
-Get simulation results
 
-What is the distribution of how often the top athlete wins a medal, 
-given a specific tournament structure?
+Olympic simulation:
+    
+    hold # of athletes and their associated skill level/ latent quality constant
+    n_sims = 100
+    draw distribution for # the best athlete wins
+    in each of the different tournament structures
+    
+    
+Get simulation results:
+
+    What is the distribution of how often the top athlete wins a medal, 
+    given a specific tournament structure?
+    
 """
 
 from fixed_vars import *
