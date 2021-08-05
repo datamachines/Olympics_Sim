@@ -33,3 +33,33 @@ for round_num in range(remaining_rounds):
 print("Round 4 winner:", rounds[len(rounds)-1])
 
 
+gold_silver_medalists = rounds[len(rounds)-2]
+   
+ 
+'''
+
+losers of the 4 quarter final matches move into a new bracket. 
+The winner of this bracket wins the bronze.
+
+'''
+
+bronze_rounds = []
+bronze_brac_rounds = 2
+
+quarterfinal_winners = rounds[len(rounds)-3]
+bronze_starting_bracket = [i for i in set(quarterfinal_winners) ^ set(rounds[len(rounds)-4])]
+
+bronze_rounds.append(bronze_starting_bracket)
+
+for round_num in range(bronze_brac_rounds):
+    next_result = next_round(bronze_rounds[round_num], athlete_avg_skill_level)
+    print ("round: ", bronze_rounds[round_num], "result: ", next_result)
+    bronze_rounds.append(next_result)
+
+bronze_medalist = bronze_rounds[2]
+print("Bronze medalist: ", bronze_rounds[2])
+
+
+top_three_medalists = [i for i in gold_silver_medalists]
+for i in bronze_medalist:
+    top_three_medalists.append(i)
