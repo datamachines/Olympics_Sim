@@ -115,9 +115,9 @@ def run_roundrobin_sims(n_sims, athlete_avg_skill_level, best_athlete_pre_oly):
 
 # Running each function and printing the output
 
-print ("------------------- Heat Simulations -------------------")
-print (run_heat_sims(n_sims, n_athletes, athlete_avg_skill_level, fastest_athlete_pre_oly))
-print ("-------------- Single Elimination Brackets -------------")
-print (run_single_elim_brac_sims(n_sims, n_athletes, athlete_avg_skill_level, best_athlete_pre_oly))
-print ("---------------------- Round Robins ---------------------")
-print (run_roundrobin_sims(n_sims, athlete_avg_skill_level, best_athlete_pre_oly))
+# print ("------------------- Heat Simulations -------------------")
+# print (run_heat_sims(n_sims, n_athletes, athlete_avg_skill_level, fastest_athlete_pre_oly))
+# print ("-------------- Single Elimination Brackets -------------")
+# print (run_single_elim_brac_sims(n_sims, n_athletes, athlete_avg_skill_level, best_athlete_pre_oly))
+# print ("---------------------- Round Robins ---------------------")
+# print (run_roundrobin_sims(n_sims, athlete_avg_skill_level, best_athlete_pre_oly))
