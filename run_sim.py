@@ -22,7 +22,7 @@ Get simulation results:
 """
 
 from fixed_vars import *
-from sim_functions import *
+from heat_functions import *
 from single_elim_sim import *
 from round_robins import *
 
