@@ -23,11 +23,11 @@ x = range(1, 101) # range to track each iteration of 100 simulations
 plt.plot(x, get_plot_data()[0], color = 'red')
 plt.plot(x, get_plot_data()[1], color = 'green')
 plt.plot(x, get_plot_data()[2], color = 'blue')
-# means plotted at simulation 50 for visual purposes, not a part of the 50th simulation
-plt.plot(50, mean_heat, marker = ".", markersize=15, color = 'red')
-plt.plot(50, mean_single, marker = ".", markersize=15, color = 'green')
-plt.plot(50, mean_robin, marker = ".", markersize=15, color = 'blue')
-plt.legend(labels, loc = 1)
+# plotting dotted mean lines 
+plt.hlines(mean_heat, x[0], x[len(x)-1], label='Heat Mean', linestyles='dashed', colors = 'red')
+plt.hlines(mean_single, x[0], x[len(x)-1], label='Single Elim Mean', linestyles='dashed', colors = 'green')
+plt.hlines(mean_robin, x[0], x[len(x)-1], label='Round Robin Mean', linestyles='dashed', colors = 'blue')
+plt.legend(labels, loc = 'center left', bbox_to_anchor=(0.92, 1))
 plt.xlabel('Number of Simulations Run (100 at each iteration)')
 plt.ylabel('Percent of Simulations that Best Athlete Won')
 plt.title('Number of Times the Best Athlete Won a Medal')
