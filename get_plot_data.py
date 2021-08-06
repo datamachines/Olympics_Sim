@@ -11,6 +11,7 @@ from fixed_vars import *
 
 # import proper packages
 import matplotlib.pyplot as plt
+import numpy as np
 
 def get_plot_data():
     # arrays to store number of times that the best athlete won a medal in each competition type
@@ -30,18 +31,3 @@ def get_plot_data():
     
     return heat_count, single_count, robin_count
 
-#print(get_plot_data()[0])
-#print("----------------")
-#print(get_plot_data()[1])
-#print("----------------")
-#print(get_plot_data()[2])
-#print("----------------")
-labels = ['Heat', 'Single Elimination', 'Round Robin']
-x = range(1, 101)
-plt.plot(x, get_plot_data()[0])
-plt.plot(x, get_plot_data()[1])
-plt.plot(x, get_plot_data()[2])
-plt.legend(labels, loc = 1)
-plt.xlabel('Number of Simulations')
-plt.ylabel('Percent Best Athlete Won')
-plt.show()
