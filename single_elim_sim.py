@@ -69,7 +69,7 @@ def get_bronze_bracket_winner(quarterfinal_winners, rounds, athlete_avg_skill_le
     return bronze_medalist
 
 
-def run_elim_bracket(n_athletes, athlete_avg_skill_level):
+def run_sin_elim_bracket(n_athletes, athlete_avg_skill_level):
     gold_silver_medalists, quarterfinal_winners, rounds = get_gold_sliv_bracket_winners(n_athletes, athlete_avg_skill_level)
     bronze_medalist = get_bronze_bracket_winner(quarterfinal_winners, rounds, athlete_avg_skill_level)
     # return the medal winners 

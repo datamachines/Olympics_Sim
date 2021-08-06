@@ -47,8 +47,8 @@ def run_heat_sims(n_sims, n_athletes, athlete_avg_skill_level, fastest_athlete_p
     for sim in range(n_sims):
         medalists = run_heat(n_athletes, athlete_avg_skill_level, num_ath_per_heat)
         
-        if best_athlete_pre_oly in medalists:
-                did_best_athlete_win.append(1)
+        if fastest_athlete_pre_oly in medalists:
+            did_best_athlete_win.append(1)
         else:
             did_best_athlete_win.append(0)
                     
@@ -71,23 +71,12 @@ this tournament structure appears in the olympics for fencing
 
 '''
 
-def run_elim_bracket(n_athletes, athlete_avg_skill_level):
-    gold_silver_medalists, quarterfinal_winners, rounds = get_gold_sliv_bracket_winners(n_athletes, athlete_avg_skill_level)
-    bronze_medalist = get_bronze_bracket_winner(quarterfinal_winners, rounds, athlete_avg_skill_level)
-    # return the medal winners 
-    # note: the gold and silver medalists aren't necessarily in order
-    medalists = [i for i in gold_silver_medalists]
-    for i in bronze_medalist:
-        medalists.append(i)
-        
-    return medalists
-
 def run_single_elim_brac_sims(n_sims, n_athletes, athlete_avg_skill_level, best_athlete_pre_oly):
     did_best_athlete_win = []
     for sim in range(n_sims):
         
         # run single elim bracket 
-        medalists = run_elim_bracket(n_athletes, athlete_avg_skill_level)
+        medalists = run_sin_elim_bracket(n_athletes, athlete_avg_skill_level)
         
         if best_athlete_pre_oly in medalists:
             did_best_athlete_win.append(1)
@@ -110,7 +99,7 @@ this tournament structure appears in the olympics for soccer, basketball, and be
 '''
 
 
-def run_roundrobin_sims(n_sims, n_athletes, athlete_avg_skill_level, best_athlete_pre_oly):
+def run_roundrobin_sims(n_sims, athlete_avg_skill_level, best_athlete_pre_oly):
     did_best_athlete_win = []
     for sim in range(n_sims):
 
@@ -124,3 +113,11 @@ def run_roundrobin_sims(n_sims, n_athletes, athlete_avg_skill_level, best_athlet
                 
     return did_best_athlete_win
 
+# Running each function and printing the output
+
+# print ("------------------- Heat Simulations -------------------")
+# print (run_heat_sims(n_sims, n_athletes, athlete_avg_skill_level, fastest_athlete_pre_oly))
+# print ("-------------- Single Elimination Brackets -------------")
+# print (run_single_elim_brac_sims(n_sims, n_athletes, athlete_avg_skill_level, best_athlete_pre_oly))
+# print ("---------------------- Round Robins ---------------------")
+# print (run_roundrobin_sims(n_sims, athlete_avg_skill_level, best_athlete_pre_oly))
