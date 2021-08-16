@@ -5,15 +5,13 @@ Created on Wed Aug  4 17:00:22 2021
 
 @author: ethan
 """
+
+
 # import functions from related scripts
 from run_sim import *
-from fixed_vars import *
 
-# import proper packages
-import matplotlib.pyplot as plt
-import numpy as np
 
-def get_plot_data():
+def get_plot_data(n_sims):
     # arrays to store number of times that the best athlete won a medal in each competition type
     heat_count = []
     single_count = []
@@ -21,7 +19,7 @@ def get_plot_data():
     # run each set of 100 simulations 100 times
     for sim in range(n_sims):
         # get sample distribution for heat, single elim, and round robins
-        did_best_athlete_win_heat = run_heat_sims(n_sims, n_athletes, athlete_avg_skill_level, fastest_athlete_pre_oly)
+        did_best_athlete_win_heat = run_heat_sims(n_sims, n_athletes, athlete_avg_skill_level, num_ath_per_heat, fastest_athlete_pre_oly)
         did_best_athlete_win_single = run_single_elim_brac_sims(n_sims, n_athletes, athlete_avg_skill_level, best_athlete_pre_oly)
         did_best_athlete_win_robin = run_roundrobin_sims(n_sims, athlete_avg_skill_level, best_athlete_pre_oly)
         # add new sample distribution to count arrays
@@ -31,22 +29,8 @@ def get_plot_data():
     
     return heat_count, single_count, robin_count
 
-<<<<<<< HEAD:plot.py
-#print(get_plot_data()[0])
-#print("----------------")
-#print(get_plot_data()[1])
-#print("----------------")
-#print(get_plot_data()[2])
-#print("----------------")
-labels = ['Heat', 'Single Elimination', 'Round Robin']
-x = range(1, 101)
-plt.plot(x, get_plot_data()[0])
-plt.plot(x, get_plot_data()[1])
-plt.plot(x, get_plot_data()[2])
-plt.legend(labels, loc = 1,
-           fancybox=True, framealpha=1, shadow=True, borderpad=1)
-plt.xlabel('Number of Simulations')
-plt.ylabel('Percent Best Athlete Won')
-plt.show()
-=======
->>>>>>> 10f8162521ae0cbcc0312c09e50224a13de2dfbf:get_plot_data.py
+
+plot_data = get_plot_data(n_sims=100)
+print("The avg time the best athlete wins a medal in heats: ", np.mean(plot_data[0]))
+print("The avg time the best athlete wins a medal in elimination bracket: ", np.mean(plot_data[1]))
+print("The avg time the best athlete wins a medal in round robins: ", np.mean(plot_data[2]))

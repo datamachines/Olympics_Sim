@@ -16,8 +16,7 @@ single elimination bracket.
 
 """
 
-import numpy as np
-from fixed_vars import *
+# from fixed_vars import *
 from collections import Counter
 import itertools
 from bracket_functions import *

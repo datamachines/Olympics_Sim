@@ -22,13 +22,10 @@ Get simulation results:
 """
 
 from fixed_vars import *
+
 from heat_functions import *
 from single_elim_sim import *
 from round_robins import *
-
-# run each tournament structure simulation
-# each tournament should output the top three finishers (the medal winners)
-n_sims = 100 
 
 
 '''
@@ -42,7 +39,7 @@ this tournament structure appears in the olympics for swimming and track events
     
 '''
 
-def run_heat_sims(n_sims, n_athletes, athlete_avg_skill_level, fastest_athlete_pre_oly):
+def run_heat_sims(n_sims, n_athletes, athlete_avg_skill_level, num_ath_per_heat, fastest_athlete_pre_oly):
     did_best_athlete_win = []
     for sim in range(n_sims):
         medalists = run_heat(n_athletes, athlete_avg_skill_level, num_ath_per_heat)

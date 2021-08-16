@@ -7,9 +7,7 @@ Created on Tuesday Aug 3 12:28 2021
 
 """
 
-import numpy as np
 from bracket_functions import *
-from fixed_vars import *
 
 
 def get_gold_sliv_bracket_winners(n_athletes, athlete_avg_skill_level):

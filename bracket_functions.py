@@ -11,14 +11,6 @@ Bracket simulation:
 """
 
 import numpy as np
-## set seed for dev, remove it for actual simulation 
-# import random
-# random.seed(10)
-
-# athletes have a latent quality (same as in the other sim)
-from fixed_vars import *
-
-totalmatches = n_athletes - 1
 
 
 def first_round(n_athletes, athlete_avg_skill_level):
