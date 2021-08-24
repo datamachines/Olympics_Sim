@@ -8,6 +8,10 @@ In this repo, there are three Olympic tournament structures being simulated:
 
 Use the plot.py script to generate two plots: a line graph and a density plot. The line graph shows the # of times the athlete with the highest average skill level won a medal per iteration of the simulation. The density plot shows the densities associated with how often the best athlete wins a medal given each tournament structure. 
 
+All you need is to clone the repo and run "python plot.py" from inside the repo to generate the two plots in /plots.
+
+
+Some information on how the simulations are generated: 
 
 Plot.py uses get_plot_data.py to generate the data which references run_sim.py to generate simulated data of the tournament structures. 
 
