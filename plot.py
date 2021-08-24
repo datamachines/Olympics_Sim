@@ -33,7 +33,7 @@ plt.xlabel('Number of Simulations Run (100 at each iteration)')
 plt.ylabel('Percent of Simulations that Best Athlete Won')
 plt.title('Amount of Time the Best Athlete Wins a Medal')
 # plt.show()
-plt.savefig('plots/linegraph.png')
+plt.savefig('plots/linegraph.png', dpi=1200)
 
 
 # plot density plots
@@ -50,4 +50,4 @@ plt.ylabel("Density")
 fig.legend(labels=['Heats','Single Elimination Bracket', 'Round Robin'], loc=1,
            fancybox=True, framealpha=1, shadow=True, borderpad=1)
 # plt.show()
-plt.savefig('plots/densityplot.png')
+plt.savefig('plots/densityplot.png', dpi=1200)
