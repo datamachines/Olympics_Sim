@@ -6,13 +6,14 @@ In this repo, there are three Olympic tournament structures being simulated:
 2. Single Elimination Brackets
 3. Round Robins
 
-Use the plot.py script to generate two plots: a line graph and a density plot. The line graph shows the # of times the athlete with the highest average skill level won a medal per iteration of the simulation. The density plot shows the densities associated with how often the best athlete wins a medal given each tournament structure. 
+The code in this repo simulates the tournament structures and creates two plots (located in /plots) to display the results of the Olympic simulation. 
 
-All you need is to clone the repo and run "python plot.py" from inside the repo to generate the two plots in /plots.
+To run the simulations and generate new results: clone the repo and run "python plot.py" from inside the repo to generate the two plots in /plots.
+
+The plot.py script generates the two plots: a line graph and a density plot. The line graph shows the # of times the athlete with the highest average skill level won a medal per iteration of the simulation. The density plot shows the densities associated with how often the best athlete wins a medal given each tournament structure. 
 
 
-Some information on how the simulations are generated: 
-
+How the simulations are generated: 
 Plot.py uses get_plot_data.py to generate the data which references run_sim.py to generate simulated data of the tournament structures. 
 
 Run_sim.py references functions defined heat_functions.py to simulate heats,  single_elim_sim.py and bracket_functions.py to simulate single elimination brackets, and round_robins.py	to simulate round robin tournaments. 
