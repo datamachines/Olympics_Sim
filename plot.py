@@ -32,8 +32,8 @@ plt.legend(labels, loc = 'center left', bbox_to_anchor=(0.92, 1))
 plt.xlabel('Number of Simulations Run (100 at each iteration)')
 plt.ylabel('Percent of Simulations that Best Athlete Won')
 plt.title('Amount of Time the Best Athlete Wins a Medal')
-plt.show()
-
+# plt.show()
+plt.savefig('plots/linegraph.png')
 
 
 # plot density plots
@@ -49,4 +49,5 @@ plt.ylabel("Density")
 
 fig.legend(labels=['Heats','Single Elimination Bracket', 'Round Robin'], loc=1,
            fancybox=True, framealpha=1, shadow=True, borderpad=1)
-plt.show()
+# plt.show()
+plt.savefig('plots/densityplot.png')
