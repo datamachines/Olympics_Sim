@@ -15,6 +15,7 @@ The code in this repo simulates the tournament structures and generates two plot
 
 
 **To run in a docker container:**
+
 We have included the Dockerfile, so all you have to do is create a new directory for the outputs of running your container (/myplots), build and run.
 
 ```
