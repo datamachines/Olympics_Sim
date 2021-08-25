@@ -25,6 +25,7 @@ docker build --tag dmc_oly:dev .
 
 docker run --rm -v `pwd`/myplots:/dmc/plots dmc_oly:dev python3 plot.py
 ```
+Once it's completed running, you should have two plots inside your `myplots` folder.
 
 
 **Explaination of the code and how the simulations are generated:**
