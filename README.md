@@ -11,12 +11,12 @@ The code in this repo simulates the tournament structures and generates two plot
 
 **To run in your own environment:**
 1. Install numpy, matplotlib, and seaborn
-2. clone the repo and run "python plot.py" from inside the repo to generate two new plots in /plots.
+2. clone the repo and run `python plot.py` from inside the repo to generate two new plots in /plots.
 
 
 **To run in a docker container:**
 
-We have included the Dockerfile, so all you have to do is create a new directory for the outputs of running your container (/myplots), build and run.
+We have included the Dockerfile, so all you have to do is create a new directory for the outputs of running your container `/myplots`, build and run.
 
 ```
 mkdir myplots
